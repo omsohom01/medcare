@@ -1,119 +1,105 @@
-/* General Styles */
-body {
-  font-family: Arial, sans-serif;
+* {
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4; /* Light background color */
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f2f5;
+}
+
+/* Container */
 .container {
-  max-width: 1200px;
-  margin: auto;
+  width: 90%;
+  max-width: 800px; /* Increase the max-width for better layout */
   padding: 20px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Header Styles */
-header {
+/* Dashboard Section */
+#dashboard header {
   text-align: center;
   margin-bottom: 20px;
 }
 
-h3 {
-  color: #333; /* Dark text color */
-}
-
-/* Services Section */
+/* Services */
 .services-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-bottom: 20px;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  white-space: nowrap; /* Prevent line breaks for services */
 }
 
 .services {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
+  display: inline-flex; /* Align items in a row */
+  justify-content: flex-start; /* Align to start */
+  padding: 10px 0; /* Add padding around the services */
 }
 
 .service-item {
-  flex: 1 1 200px; /* Flex item with a minimum width */
-  margin: 10px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
-  padding: 15px;
+  width: 150px; /* Fixed width for side-by-side layout */
+  margin-right: 20px; /* Space between items */
 }
 
 .service-item img {
-  max-width: 100%;
-  border-radius: 8px; /* Rounded corners for images */
-}
-
-/* Consult Section */
-.consult-section {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Center content */
-  margin: 20px 0;
-}
-
-.consult-section p {
-  margin: 0 20px; /* Space around text */
-  font-weight: bold;
-  font-size: 1.2em; /* Increased font size */
-}
-
-.side-image {
-  width: 10px; /* Set width for side images */
-  margin: 0 10px; /* Space between images */
-  vertical-align: middle; /* Align with text */
-}
-
-/* Promo Section */
-.promo-section {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Center content */
-  margin: 20px 0;
-}
-
-.promo-section p {
-  margin: 0 20px; /* Space around text */
-  font-weight: bold;
-  font-size: 1.2em; /* Increased font size */
+  width: 80px; /* Adjust image size */
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 5px;
 }
 
 /* Button Styles */
-button {
-  background-color: #007BFF; /* Bootstrap primary color */
+.consult-button, .promo-button {
+  padding: 12px 24px; /* Increased padding for a larger button */
+  background-color: #007bff; /* Blue background */
   color: white;
   border: none;
-  padding: 10px 20px;
   border-radius: 5px;
+  font-size: 16px; /* Increased font size */
   cursor: pointer;
-  font-size: 1em;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for color and size */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
 }
 
-button:hover {
-  background-color: #0056b3; /* Darker shade on hover */
+.consult-button:hover, .promo-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: translateY(-2px); /* Slight lift effect on hover */
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .services-container {
-      flex-direction: column; /* Stack services vertically on smaller screens */
-  }
+.consult-button:focus, .promo-button:focus {
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.5); /* Focus ring for accessibility */
+}
 
-  .consult-section,
-  .promo-section {
-      flex-direction: column; /* Stack sections vertically on smaller screens */
-      align-items: center; /* Center content */
-  }
+.consult-section, .promo-section {
+  text-align: center;
+  margin: 20px 0;
+}
 
-  .side-image {
-      width: 40px; /* Adjust side image size for smaller screens */
-  }
+.promo-section {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.promo-section p {
+  margin-bottom: 5px;
+}
+
+.promo-section .strikethrough {
+  text-decoration: line-through;
+}
+
+/* Side Image Styles */
+.side-image {
+    width: 30px; /* Set a small width for side images */
+    height: 30px; /* Set height to maintain aspect ratio */
+    margin: 0 10px; /* Space between images and text */
+    vertical-align: middle; /* Align images vertically with text */
 }
