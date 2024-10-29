@@ -29,16 +29,22 @@ body {
   margin-bottom: 20px;
 }
 
+/* Services */
+.services-container {
+  overflow-x: auto; /* Enable horizontal scrolling */
+  white-space: nowrap; /* Prevent line breaks for services */
+}
+
 .services {
-  display: flex;
-  justify-content: space-between; /* Distribute space between service items */
-  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  display: inline-flex; /* Align items in a row */
+  justify-content: flex-start; /* Align to start */
+  padding: 10px 0; /* Add padding around the services */
 }
 
 .service-item {
   text-align: center;
-  width: 23%; /* Adjust width to fit side by side */
-  margin-bottom: 20px;
+  width: 150px; /* Fixed width for side-by-side layout */
+  margin-right: 20px; /* Space between items */
 }
 
 .service-item img {
