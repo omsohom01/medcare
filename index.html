@@ -1,64 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Medical Website</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Website - Login</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  
-  <!-- Login Section -->
-  <div id="login-section" class="container">
-    <h2>Login</h2>
-    <input type="email" id="email" placeholder="Email" required>
-    <input type="password" id="password" placeholder="Password" required>
-    <button onclick="login()">Login</button>
-  </div>
-
-  <!-- Dashboard Section -->
-  <div id="dashboard" class="container hidden">
-    <header>
-      <div class="user-profile">
-        <span class="profile-icon">J</span>
-        <span class="user-name">Joydipta Roy</span>
-        <span class="bell-icon">🔔</span>
-      </div>
-      <h3>Our Services</h3>
-    </header>
-
-    <div class="services">
-      <div class="service-item">
-        <img src="online_consultation.jpg" alt="Online Consultation">
-        <p>Online Consultation</p>
-      </div>
-      <div class="service-item">
-        <img src="opd_appointment.jpg" alt="OPD/Clinic Appointment">
-        <p>OPD/Clinic Appointment</p>
-      </div>
-      <div class="service-item">
-        <img src="lab_test.jpg" alt="Book Lab Test">
-        <p>Book Lab Test</p>
-      </div>
-      <div class="service-item">
-        <img src="ambulance.jpg" alt="Emergency Ambulance">
-        <p>Emergency Ambulance</p>
-      </div>
+    <div id="login-container" class="container">
+        <h2>Login</h2>
+        <form id="login-form">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+                <small class="error" id="emailError"></small>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+                <small class="error" id="passwordError"></small>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <p id="loginMessage" class="message"></p>
     </div>
 
-    <div class="consult-section">
-      <p>Consult a doctor within 90 seconds</p>
-      <button>Consult Now</button>
-    </div>
-
-    <div class="promo-section">
-      <p>Back by Popular Demand</p>
-      <p>Reintroducing Olympic-Nutrition Health Package.</p>
-      <p>Now at <span class="strikethrough">₹2800</span> ₹1399 - 50% off!</p>
-      <button>Book Now</button>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
