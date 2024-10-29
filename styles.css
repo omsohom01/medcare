@@ -43,14 +43,14 @@ body {
 
 .service-item {
   text-align: center;
-  width: 150px; /* Fixed width for side-by-side layout */
-  margin-right: 20px; /* Space between items */
+  width: 100px; /* Reduced width for smaller capsules */
+  margin-right: 10px; /* Space between items */
 }
 
 .service-item img {
-  width: 80px; /* Adjust image size */
-  height: 80px;
-  border-radius: 50%;
+  width: 60px; /* Adjust image size for smaller icons */
+  height: 60px; /* Maintain aspect ratio */
+  border-radius: 50%; /* Keep round shape */
   margin-bottom: 5px;
 }
 
@@ -94,12 +94,4 @@ body {
 
 .promo-section .strikethrough {
   text-decoration: line-through;
-}
-
-/* Side Image Styles */
-.side-image {
-    width: 30px; /* Set a small width for side images */
-    height: 30px; /* Set height to maintain aspect ratio */
-    margin: 0 10px; /* Space between images and text */
-    vertical-align: middle; /* Align images vertically with text */
 }
