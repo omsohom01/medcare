@@ -1,77 +1,92 @@
 /* General Styles */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f0f2f5;
-}
-
-/* Container */
-.container {
-  width: 90%;
-  max-width: 400px; /* Max width for mobile view */
-  padding: 20px;
-  border-radius: 10px;
-  background-color: white;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Mobile-Only Styles */
-#dashboard header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-/* Media Query for Larger Screens */
-@media (min-width: 768px) {
-  /* Container expands for larger screens */
-  .container {
-    width: 80%; /* Adjust this percentage as needed */
-    max-width: 1000px; /* Full screen on laptops/desktops */
-    height: auto;
-    margin: auto;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-  }
-  
-  /* Center login section for desktops */
-  #login-section {
-    margin: 0 auto;
-  }
-  
-  /* Dashboard adjusts to spread across the screen */
-  #dashboard header {
-    justify-content: space-around;
-  }
+    height: 100vh;
+    background-color: #f0f2f5;
+}
 
-  .services {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-  }
+.container {
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
 
-  .service-item img {
-    width: 80px; /* Increase icon size for larger screens */
-    height: 80px;
-  }
-
-  .promo-section, .consult-section {
-    width: 70%;
+/* Login Form */
+h2 {
     text-align: center;
-  }
+    margin-bottom: 20px;
+}
 
-  .promo-section button, .consult-section button {
-    font-size: 18px;
-  }
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    display: none;
+}
+
+.message {
+    text-align: center;
+    font-size: 14px;
+    color: green;
+    margin-top: 20px;
+}
+
+/* Full-Screen Layout for Larger Screens */
+@media (min-width: 768px) {
+    .container {
+        width: 100%;
+        max-width: none;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 }
