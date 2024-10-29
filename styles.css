@@ -1,97 +1,119 @@
-* {
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  background-color: #f4f4f4; /* Light background color */
 }
 
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f0f2f5;
-}
-
-/* Container */
 .container {
-  width: 90%;
-  max-width: 800px; /* Increase the max-width for better layout */
+  max-width: 1200px;
+  margin: auto;
   padding: 20px;
-  border-radius: 10px;
-  background-color: white;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Dashboard Section */
-#dashboard header {
+/* Header Styles */
+header {
   text-align: center;
   margin-bottom: 20px;
 }
 
-/* Services */
+h3 {
+  color: #333; /* Dark text color */
+}
+
+/* Services Section */
 .services-container {
-  overflow-x: auto; /* Enable horizontal scrolling */
-  white-space: nowrap; /* Prevent line breaks for services */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .services {
-  display: inline-flex; /* Align items in a row */
-  justify-content: flex-start; /* Align to start */
-  padding: 10px 0; /* Add padding around the services */
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .service-item {
+  flex: 1 1 200px; /* Flex item with a minimum width */
+  margin: 10px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
-  width: 150px; /* Fixed width for side-by-side layout */
-  margin-right: 20px; /* Space between items */
+  padding: 15px;
 }
 
 .service-item img {
-  width: 80px; /* Adjust image size */
-  height: 80px;
-  border-radius: 50%;
-  margin-bottom: 5px;
+  max-width: 100%;
+  border-radius: 8px; /* Rounded corners for images */
 }
 
-/* Button Styles */
-.consult-button, .promo-button {
-  padding: 12px 24px; /* Increased padding for a larger button */
-  background-color: #007bff; /* Blue background */
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px; /* Increased font size */
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for color and size */
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
-}
-
-.consult-button:hover, .promo-button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
-  transform: translateY(-2px); /* Slight lift effect on hover */
-}
-
-.consult-button:focus, .promo-button:focus {
-  outline: none; /* Remove default focus outline */
-  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.5); /* Focus ring for accessibility */
-}
-
-.consult-section, .promo-section {
-  text-align: center;
+/* Consult Section */
+.consult-section {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center content */
   margin: 20px 0;
 }
 
+.consult-section p {
+  margin: 0 20px; /* Space around text */
+  font-weight: bold;
+  font-size: 1.2em; /* Increased font size */
+}
+
+.side-image {
+  width: 50px; /* Set width for side images */
+  margin: 0 10px; /* Space between images */
+  vertical-align: middle; /* Align with text */
+}
+
+/* Promo Section */
 .promo-section {
-  background-color: #f8f9fa;
-  padding: 15px;
-  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center content */
+  margin: 20px 0;
 }
 
 .promo-section p {
-  margin-bottom: 5px;
+  margin: 0 20px; /* Space around text */
+  font-weight: bold;
+  font-size: 1.2em; /* Increased font size */
 }
 
-.promo-section .strikethrough {
-  text-decoration: line-through;
+/* Button Styles */
+button {
+  background-color: #007BFF; /* Bootstrap primary color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .services-container {
+      flex-direction: column; /* Stack services vertically on smaller screens */
+  }
+
+  .consult-section,
+  .promo-section {
+      flex-direction: column; /* Stack sections vertically on smaller screens */
+      align-items: center; /* Center content */
+  }
+
+  .side-image {
+      width: 40px; /* Adjust side image size for smaller screens */
+  }
 }
