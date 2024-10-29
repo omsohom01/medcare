@@ -37,7 +37,7 @@ body {
 
 .service-item {
   text-align: center;
-  width: 45%; /* Adjust width to fit side by side */
+  width: 23%; /* Adjust width to fit side by side */
   margin-bottom: 20px;
 }
 
@@ -49,7 +49,7 @@ body {
 }
 
 /* Button Styles */
-.service-button, .consult-button, .promo-button {
+.consult-button, .promo-button {
   padding: 10px 20px;
   background-color: #007bff; /* Blue background */
   color: white;
@@ -59,7 +59,7 @@ body {
   transition: background-color 0.3s ease; /* Smooth transition */
 }
 
-.service-button:hover, .consult-button:hover, .promo-button:hover {
+.consult-button:hover, .promo-button:hover {
   background-color: #0056b3; /* Darker blue on hover */
 }
 
