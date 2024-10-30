@@ -28,6 +28,9 @@
             height: 100px;
             margin-right: 20px;
         }
+        .food-name {
+            font-weight: bold; /* Make the food name bold */
+        }
         .quantity-container {
             display: flex;
             align-items: center;
@@ -51,11 +54,7 @@
             border-radius: 5px; /* Rounded corners */
         }
         .btn-increment, .btn-decrement {
-            background-color: darkred; /* Dark red for buttons */
-            font-weight: bold; /* Bold text */
-        }
-        .submit-order {
-            background-color: red; /* Red for Submit Order button */
+            background-color: darkred; /* Dark red for +/- buttons */
         }
         .hidden {
             display: none;
@@ -66,6 +65,10 @@
         #food-image {
             margin-top: 20px;
         }
+        .error-message {
+            color: red; /* Color for error message */
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -75,6 +78,7 @@
 
         <div class="food-item" data-food="Pan D">
             <img src="images/pandy.jpg" alt="Pan D">
+            <span class="food-name">Pan D</span> <!-- Added food name -->
             <div class="quantity-container">
                 <button class="btn btn-decrement" onclick="decreaseQuantity(this)">-</button>
                 <input type="text" class="quantity" value="0" readonly>
@@ -84,6 +88,7 @@
 
         <div class="food-item" data-food="Phazyme">
             <img src="images/Phazyme.jpg" alt="Phazyme">
+            <span class="food-name">Phazyme</span> <!-- Added food name -->
             <div class="quantity-container">
                 <button class="btn btn-decrement" onclick="decreaseQuantity(this)">-</button>
                 <input type="text" class="quantity" value="0" readonly>
@@ -93,6 +98,7 @@
 
         <div class="food-item" data-food="Paracetamol">
             <img src="images/Paracetamol.jpg" alt="Paracetamol">
+            <span class="food-name">Paracetamol</span> <!-- Added food name -->
             <div class="quantity-container">
                 <button class="btn btn-decrement" onclick="decreaseQuantity(this)">-</button>
                 <input type="text" class="quantity" value="0" readonly>
@@ -102,6 +108,7 @@
 
         <div class="food-item" data-food="Thyroxine">
             <img src="images/Medicine.jpg" alt="Thyroxine">
+            <span class="food-name">Thyroxine</span> <!-- Added food name -->
             <div class="quantity-container">
                 <button class="btn btn-decrement" onclick="decreaseQuantity(this)">-</button>
                 <input type="text" class="quantity" value="0" readonly>
@@ -119,12 +126,14 @@
         <label for="Phone No">Phone No:</label>
         <input type="text" id="Phone No"><br><br>
 
-        <button class="btn submit-order" onclick="submitOrder()">Submit Order</button>
+        <button class="btn" onclick="submitOrder()">Submit Order</button>
+        <p id="error-message" class="error-message hidden"></p> <!-- Error message for empty fields -->
 
         <div id="submitted-details" class="hidden">
             <h2>Order Details</h2>
             <p id="order-summary"></p>
             <p id="bill"></p>
+            <p id="customer-details"></p> <!-- Display customer details -->
             <img id="food-image" src="images/food.jpg" alt="Food">
         </div>
     </div>
@@ -148,9 +157,20 @@
 
         function submitOrder() {
             const foodItems = document.querySelectorAll('.food-item');
-            const name = document.getElementById('name').value;
-            const address = document.getElementById('Address').value;
-            const phoneNo = document.getElementById('Phone No').value;
+            const name = document.getElementById('name').value.trim();
+            const address = document.getElementById('Address').value.trim();
+            const phoneNo = document.getElementById('Phone No').value.trim();
+            const errorMessage = document.getElementById('error-message');
+
+            // Clear previous error message
+            errorMessage.classList.add('hidden');
+
+            // Check for empty fields
+            if (!name || !address || !phoneNo) {
+                errorMessage.textContent = 'Please fill all the sections.';
+                errorMessage.classList.remove('hidden');
+                return; // Exit the function if there are empty fields
+            }
 
             let orderSummary = '';
             let totalBill = 0;
@@ -167,18 +187,19 @@
             });
 
             // Display order details
-            displayOrderDetails(orderSummary, totalBill);
+            displayOrderDetails(orderSummary, totalBill, name, address, phoneNo);
         }
 
-        function displayOrderDetails(summary, bill) {
+        function displayOrderDetails(summary, bill, name, address, phoneNo) {
             document.querySelectorAll('.food-item').forEach(item => item.classList.add('hidden'));
             document.querySelector('h2').classList.add('hidden');
             document.querySelectorAll('input').forEach(input => input.classList.add('hidden'));
-            document.querySelector('.btn.submit-order').classList.add('hidden');
+            document.querySelector('.btn').classList.add('hidden');
 
             document.getElementById('submitted-details').classList.remove('hidden');
             document.getElementById('order-summary').innerHTML = summary;
             document.getElementById('bill').innerHTML = `Total Bill: Rs ${bill}`;
+            document.getElementById('customer-details').innerHTML = `Name: ${name}<br>Address: ${address}<br>Phone No: ${phoneNo}`;
         }
     </script>
 
