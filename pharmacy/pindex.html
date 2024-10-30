@@ -56,6 +56,9 @@
         .btn-increment, .btn-decrement {
             background-color: darkred; /* Dark red for +/- buttons */
         }
+        .btn-submit {
+            background-color: red; /* Red for submit button */
+        }
         .hidden {
             display: none;
         }
@@ -69,13 +72,14 @@
             color: red; /* Color for error message */
             margin-top: 10px;
         }
+        .detail {
+            margin-top: 10px; /* Add margin for spacing between details */
+        }
     </style>
 </head>
 <body>
 
     <div class="main-content">
-        <h1>Order Your Medicine</h1>
-
         <div class="food-item" data-food="Pan D">
             <img src="images/pandy.jpg" alt="Pan D">
             <span class="food-name">Pan D</span> <!-- Added food name -->
@@ -116,7 +120,6 @@
             </div>
         </div>
 
-        <h2>Enter Your Details</h2>
         <label for="name">Name:</label>
         <input type="text" id="name"><br><br>
 
@@ -126,14 +129,14 @@
         <label for="Phone No">Phone No:</label>
         <input type="text" id="Phone No"><br><br>
 
-        <button class="btn" onclick="submitOrder()">Submit Order</button>
+        <button class="btn btn-submit" onclick="submitOrder()">Submit Order</button>
         <p id="error-message" class="error-message hidden"></p> <!-- Error message for empty fields -->
 
         <div id="submitted-details" class="hidden">
             <h2>Order Details</h2>
-            <p id="order-summary"></p>
-            <p id="bill"></p>
-            <p id="customer-details"></p> <!-- Display customer details -->
+            <p id="order-summary" class="detail"></p>
+            <p id="bill" class="detail"></p>
+            <p id="customer-details" class="detail"></p> <!-- Display customer details -->
             <img id="food-image" src="images/food.jpg" alt="Food">
         </div>
     </div>
@@ -192,9 +195,9 @@
 
         function displayOrderDetails(summary, bill, name, address, phoneNo) {
             document.querySelectorAll('.food-item').forEach(item => item.classList.add('hidden'));
-            document.querySelector('h2').classList.add('hidden');
+            document.querySelector('label').classList.add('hidden');
             document.querySelectorAll('input').forEach(input => input.classList.add('hidden'));
-            document.querySelector('.btn').classList.add('hidden');
+            document.querySelector('.btn-submit').classList.add('hidden'); // Hide submit button
 
             document.getElementById('submitted-details').classList.remove('hidden');
             document.getElementById('order-summary').innerHTML = summary;
