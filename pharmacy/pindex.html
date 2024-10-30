@@ -50,11 +50,12 @@
             font-weight: bold;
             border-radius: 5px; /* Rounded corners */
         }
-        .btn-increment {
-            background-color: darkred; /* Dark red for + button */
+        .btn-increment, .btn-decrement {
+            background-color: darkred; /* Dark red for buttons */
+            font-weight: bold; /* Bold text */
         }
-        .btn-decrement {
-            background-color: darkred; /* Dark red for - button */
+        .submit-order {
+            background-color: red; /* Red for Submit Order button */
         }
         .hidden {
             display: none;
@@ -118,7 +119,7 @@
         <label for="Phone No">Phone No:</label>
         <input type="text" id="Phone No"><br><br>
 
-        <button class="btn" onclick="submitOrder()">Submit Order</button>
+        <button class="btn submit-order" onclick="submitOrder()">Submit Order</button>
 
         <div id="submitted-details" class="hidden">
             <h2>Order Details</h2>
@@ -173,7 +174,7 @@
             document.querySelectorAll('.food-item').forEach(item => item.classList.add('hidden'));
             document.querySelector('h2').classList.add('hidden');
             document.querySelectorAll('input').forEach(input => input.classList.add('hidden'));
-            document.querySelector('.btn').classList.add('hidden');
+            document.querySelector('.btn.submit-order').classList.add('hidden');
 
             document.getElementById('submitted-details').classList.remove('hidden');
             document.getElementById('order-summary').innerHTML = summary;
