@@ -32,13 +32,22 @@
             display: inline-block;
             width: 40px;
             text-align: center;
+            margin: 0 5px; /* Add some margin around the quantity */
+        }
+        .btn-container {
+            display: flex;
+            align-items: center;
+            background-color: #ffcccc; /* Red background */
+            padding: 5px;
+            border-radius: 5px; /* Rounded corners */
         }
         .btn {
-            padding: 10px 15px;
+            padding: 5px 10px;
             background-color: #28a745;
             color: white;
             border: none;
             cursor: pointer;
+            margin: 0; /* Reset margin for buttons */
         }
         .hidden {
             display: none;
@@ -57,38 +66,38 @@
         <h1>Order Your Medicine</h1>
 
         <div class="food-item" data-food="Pan D">
-            <img src="images/pandy.gpg.jpeg" alt="Pan D">
-            <div>
-                <button onclick="decreaseQuantity(this)">-</button>
-                <button onclick="increaseQuantity(this)">+</button>
+            <img src="images/pandy.jpg" alt="Pan D">
+            <div class="btn-container">
+                <button class="btn" onclick="increaseQuantity(this)">+</button>
                 <span class="quantity">0</span>
+                <button class="btn" onclick="decreaseQuantity(this)">-</button>
             </div>
         </div>
 
         <div class="food-item" data-food="Phazyme">
             <img src="images/Phazyme.jpg" alt="Phazyme">
-            <div>
-                <button onclick="decreaseQuantity(this)">-</button>
-                <button onclick="increaseQuantity(this)">+</button>
+            <div class="btn-container">
+                <button class="btn" onclick="increaseQuantity(this)">+</button>
                 <span class="quantity">0</span>
+                <button class="btn" onclick="decreaseQuantity(this)">-</button>
             </div>
         </div>
 
         <div class="food-item" data-food="Paracetamol">
             <img src="images/Paracetamol.jpg" alt="Paracetamol">
-            <div>
-                <button onclick="decreaseQuantity(this)">-</button>
-                <button onclick="increaseQuantity(this)">+</button>
+            <div class="btn-container">
+                <button class="btn" onclick="increaseQuantity(this)">+</button>
                 <span class="quantity">0</span>
+                <button class="btn" onclick="decreaseQuantity(this)">-</button>
             </div>
         </div>
 
         <div class="food-item" data-food="Thyroxine">
             <img src="images/Medicine.jpg" alt="Thyroxine">
-            <div>
-                <button onclick="decreaseQuantity(this)">-</button>
-                <button onclick="increaseQuantity(this)">+</button>
+            <div class="btn-container">
+                <button class="btn" onclick="increaseQuantity(this)">+</button>
                 <span class="quantity">0</span>
+                <button class="btn" onclick="decreaseQuantity(this)">-</button>
             </div>
         </div>
 
