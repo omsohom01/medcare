@@ -73,7 +73,7 @@
             margin-top: 10px;
         }
         .detail {
-            margin-top: 10px; /* Add margin for spacing between details */
+            margin-top: 15px; /* Increased margin for spacing between details */
         }
     </style>
 </head>
@@ -136,7 +136,7 @@
             <h2>Order Details</h2>
             <p id="order-summary" class="detail"></p>
             <p id="bill" class="detail"></p>
-            <p id="customer-details" class="detail"></p> <!-- Display customer details -->
+            <p id="customer-name" class="detail"></p> <!-- Display customer name -->
             <img id="food-image" src="images/food.jpg" alt="Food">
         </div>
     </div>
@@ -190,10 +190,10 @@
             });
 
             // Display order details
-            displayOrderDetails(orderSummary, totalBill, name, address, phoneNo);
+            displayOrderDetails(orderSummary, totalBill, name);
         }
 
-        function displayOrderDetails(summary, bill, name, address, phoneNo) {
+        function displayOrderDetails(summary, bill, name) {
             document.querySelectorAll('.food-item').forEach(item => item.classList.add('hidden'));
             document.querySelector('label').classList.add('hidden');
             document.querySelectorAll('input').forEach(input => input.classList.add('hidden'));
@@ -202,7 +202,7 @@
             document.getElementById('submitted-details').classList.remove('hidden');
             document.getElementById('order-summary').innerHTML = summary;
             document.getElementById('bill').innerHTML = `Total Bill: Rs ${bill}`;
-            document.getElementById('customer-details').innerHTML = `Name: ${name}<br>Address: ${address}<br>Phone No: ${phoneNo}`;
+            document.getElementById('customer-name').innerHTML = `Name: ${name}`; // Display only name
         }
     </script>
 
