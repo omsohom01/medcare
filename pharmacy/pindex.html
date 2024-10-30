@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medicine Ordering System</title>
+    <title>Food Ordering System</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -73,7 +73,7 @@
             margin-top: 10px;
         }
         .detail {
-            margin-top: 15px; /* Increased margin for spacing between details */
+            margin-top: 10px; /* Add margin for spacing between details */
         }
     </style>
 </head>
@@ -134,9 +134,9 @@
 
         <div id="submitted-details" class="hidden">
             <h2>Order Details</h2>
-            <p id="customer-name" class="detail"></p> <!-- Display customer name -->
             <p id="order-summary" class="detail"></p>
             <p id="bill" class="detail"></p>
+            <p id="customer-details" class="detail"></p> <!-- Display customer details -->
             <img id="food-image" src="images/food.jpg" alt="Food">
         </div>
     </div>
@@ -190,10 +190,10 @@
             });
 
             // Display order details
-            displayOrderDetails(orderSummary, totalBill, name);
+            displayOrderDetails(orderSummary, totalBill, name, address, phoneNo);
         }
 
-        function displayOrderDetails(summary, bill, name) {
+        function displayOrderDetails(summary, bill, name, address, phoneNo) {
             document.querySelectorAll('.food-item').forEach(item => item.classList.add('hidden'));
             document.querySelector('label').classList.add('hidden');
             document.querySelectorAll('input').forEach(input => input.classList.add('hidden'));
@@ -202,7 +202,7 @@
             document.getElementById('submitted-details').classList.remove('hidden');
             document.getElementById('order-summary').innerHTML = summary;
             document.getElementById('bill').innerHTML = `Total Bill: Rs ${bill}`;
-            document.getElementById('customer-name').innerHTML = `Name: ${name}`; // Display only name
+            document.getElementById('customer-details').innerHTML = `Name: ${name}<br>Address: ${address}<br>Phone No: ${phoneNo}`;
         }
     </script>
 
