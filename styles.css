@@ -95,3 +95,11 @@ body {
 .promo-section .strikethrough {
   text-decoration: line-through;
 }
+
+/* Side Image Styles */
+.side-image {
+  width: 30px; /* Adjust width as needed */
+  height: auto; /* Maintain aspect ratio */
+  vertical-align: middle; /* Align with text */
+  margin: 0 10px; /* Space between the image and text */
+}
