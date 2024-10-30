@@ -114,3 +114,8 @@ body {
 .promo-section .strikethrough {
   text-decoration: line-through;
 }
+/* Background Image */
+body {
+  background: url('images/background.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
