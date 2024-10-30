@@ -5,82 +5,103 @@
   font-family: Arial, sans-serif;
 }
 
+/* Background Image */
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f0f2f5;
+  background: url('images/background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #333;
 }
 
 /* Container */
 .container {
   width: 90%;
   max-width: 800px;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: white;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Dashboard Section */
+/* Dashboard Header */
 #dashboard header {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
 }
 
-/* Services */
+/* Services Section */
 .services-container {
   overflow-x: auto;
   white-space: nowrap;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .services {
   display: inline-flex;
   justify-content: flex-start;
-  padding: 10px 0;
 }
 
 .service-item {
   text-align: center;
   width: 150px;
   margin-right: 20px;
+  transition: transform 0.2s ease;
 }
 
 .service-item img {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* Line with Icons */
-.line-with-icons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.line-with-icons p {
-  margin: 0;
+.service-item p {
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 600;
+  color: #444;
 }
 
-.side-icon {
-  width: 24px;
-  height: 24px;
+.service-item:hover {
+  transform: translateY(-5px);
+}
+
+/* Consultation and Promo Sections */
+.consult-section, .promo-section {
+  text-align: center;
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(250, 250, 250, 0.9);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.consult-section p, .promo-section p {
+  font-size: 18px;
+  color: #333;
+}
+
+.promo-section p {
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 
 /* Button Styles */
 .consult-button, .promo-button {
-  padding: 12px 24px;
+  padding: 10px 20px;
   background-color: #007bff;
   color: white;
   border: none;
   border-radius: 5px;
   font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -96,26 +117,17 @@ body {
   box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.5);
 }
 
-.consult-section, .promo-section {
-  text-align: center;
-  margin: 20px 0;
+/* Link and Hover Effects */
+.service-item a {
+  text-decoration: none;
+  color: inherit;
 }
 
-.promo-section {
-  background-color: #f8f9fa;
-  padding: 15px;
-  border-radius: 10px;
-}
-
-.promo-section p {
-  margin-bottom: 5px;
+.service-item:hover a {
+  color: #007bff;
 }
 
 .promo-section .strikethrough {
   text-decoration: line-through;
-}
-/* Background Image */
-body {
-  background: url('images/background.jpg') no-repeat center center fixed;
-  background-size: cover;
+  color: #777;
 }
