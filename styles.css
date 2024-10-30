@@ -117,17 +117,34 @@ body {
   box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.5);
 }
 
-/* Link and Hover Effects */
-.service-item a {
-  text-decoration: none;
-  color: inherit;
+/* Doctors Section */
+.doctors-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
 }
 
-.service-item:hover a {
-  color: #007bff;
+.doctor-item {
+  text-align: center;
+  width: 30%;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
 }
 
-.promo-section .strikethrough {
-  text-decoration: line-through;
-  color: #777;
+.doctor-item img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 8px;
+}
+
+.doctor-item p {
+  font-weight: bold;
+  margin: 8px 0;
+}
+
+.doctor-item .consult-button {
+  margin-top: 10px;
 }
