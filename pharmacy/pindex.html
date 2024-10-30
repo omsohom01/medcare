@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food Ordering System</title>
+    <title>Medicine Ordering System</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,25 +11,33 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            background-image: url('images/background.jpg'); /* Set background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: #333; /* Contrast text for readability */
         }
         .main-content {
             width: 90%;
             max-width: 800px;
+            background-color: rgba(255, 255, 255, 0.8); /* Add a slight overlay for readability */
+            padding: 20px;
+            border-radius: 10px;
         }
-        .food-item {
+        .medicine-item {
             display: flex;
             align-items: center;
             margin-bottom: 20px;
             width: 100%;
             justify-content: space-between;
         }
-        .food-item img {
+        .medicine-item img {
             width: 100px;
             height: 100px;
             margin-right: 20px;
         }
-        .food-name {
-            font-weight: bold; /* Make the food name bold */
+        .medicine-name {
+            font-weight: bold;
         }
         .quantity-container {
             display: flex;
@@ -39,8 +47,8 @@
             width: 40px;
             text-align: center;
             background-color: white;
-            color: red;
-            border: 2px solid red;
+            color: darkgreen;
+            border: 2px solid darkgreen;
             border-radius: 5px;
             margin: 0 5px;
             font-weight: bold;
@@ -51,13 +59,13 @@
             color: white;
             cursor: pointer;
             font-weight: bold;
-            border-radius: 5px; /* Rounded corners */
+            border-radius: 5px;
         }
         .btn-increment, .btn-decrement {
-            background-color: darkred; /* Dark red for +/- buttons */
+            background-color: darkgreen;
         }
         .btn-submit {
-            background-color: red; /* Red for submit button */
+            background-color: green;
         }
         .hidden {
             display: none;
@@ -65,24 +73,24 @@
         #submitted-details {
             margin-top: 20px;
         }
-        #food-image {
+        #medicine-image {
             margin-top: 20px;
         }
         .error-message {
-            color: red; /* Color for error message */
+            color: red;
             margin-top: 10px;
         }
         .detail {
-            margin-top: 10px; /* Add margin for spacing between details */
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
 
     <div class="main-content">
-        <h2>Food Ordering System</h2>
+        <h2>Medicine Ordering System</h2>
 
-        <!-- Input fields for user details -->
+        <!-- Input fields for customer details -->
         <label for="name">Name:</label>
         <input type="text" id="name"><br><br>
         
@@ -92,9 +100,9 @@
         <label for="phone">Phone No:</label>
         <input type="text" id="phone"><br><br>
 
-        <div class="food-item" data-food="Pan D">
+        <div class="medicine-item" data-medicine="Pan D">
             <img src="images/pandy.jpg" alt="Pan D">
-            <span class="food-name">Pan D</span> <!-- Added food name -->
+            <span class="medicine-name">Pan D</span>
             <div class="quantity-container">
                 <button class="btn btn-decrement" onclick="decreaseQuantity(this)">-</button>
                 <input type="text" class="quantity" value="0" readonly>
@@ -102,9 +110,9 @@
             </div>
         </div>
 
-        <div class="food-item" data-food="Phazyme">
+        <div class="medicine-item" data-medicine="Phazyme">
             <img src="images/Phazyme.jpg" alt="Phazyme">
-            <span class="food-name">Phazyme</span> <!-- Added food name -->
+            <span class="medicine-name">Phazyme</span>
             <div class="quantity-container">
                 <button class="btn btn-decrement" onclick="decreaseQuantity(this)">-</button>
                 <input type="text" class="quantity" value="0" readonly>
@@ -112,9 +120,9 @@
             </div>
         </div>
 
-        <div class="food-item" data-food="Paracetamol">
+        <div class="medicine-item" data-medicine="Paracetamol">
             <img src="images/Paracetamol.jpg" alt="Paracetamol">
-            <span class="food-name">Paracetamol</span> <!-- Added food name -->
+            <span class="medicine-name">Paracetamol</span>
             <div class="quantity-container">
                 <button class="btn btn-decrement" onclick="decreaseQuantity(this)">-</button>
                 <input type="text" class="quantity" value="0" readonly>
@@ -122,9 +130,9 @@
             </div>
         </div>
 
-        <div class="food-item" data-food="Thyroxine">
+        <div class="medicine-item" data-medicine="Thyroxine">
             <img src="images/Medicine.jpg" alt="Thyroxine">
-            <span class="food-name">Thyroxine</span> <!-- Added food name -->
+            <span class="medicine-name">Thyroxine</span>
             <div class="quantity-container">
                 <button class="btn btn-decrement" onclick="decreaseQuantity(this)">-</button>
                 <input type="text" class="quantity" value="0" readonly>
@@ -133,14 +141,14 @@
         </div>
 
         <button class="btn btn-submit" onclick="submitOrder()">Submit Order</button>
-        <p id="error-message" class="error-message hidden"></p> <!-- Error message for empty fields -->
+        <p id="error-message" class="error-message hidden"></p>
 
         <div id="submitted-details" class="hidden">
             <h2>Order Details</h2>
             <p id="order-summary" class="detail"></p>
             <p id="bill" class="detail"></p>
-            <p id="customer-details" class="detail"></p> <!-- Display customer details -->
-            <img id="food-image" src="images/food.jpg" alt="Food">
+            <p id="customer-details" class="detail"></p>
+            <img id="medicine-image" src="images/medicine.jpg" alt="Medicine">
         </div>
     </div>
 
@@ -162,45 +170,42 @@
         }
 
         function submitOrder() {
-            const foodItems = document.querySelectorAll('.food-item');
+            const medicineItems = document.querySelectorAll('.medicine-item');
             const name = document.getElementById('name').value.trim();
             const address = document.getElementById('address').value.trim();
             const phone = document.getElementById('phone').value.trim();
             const errorMessage = document.getElementById('error-message');
 
-            // Clear previous error message
             errorMessage.classList.add('hidden');
 
-            // Check for empty fields
             if (!name || !address || !phone) {
                 errorMessage.textContent = 'Please fill in all fields.';
                 errorMessage.classList.remove('hidden');
-                return; // Exit the function if there are empty fields
+                return;
             }
 
             let orderSummary = '';
             let totalBill = 0;
 
-            foodItems.forEach(item => {
-                const foodName = item.getAttribute('data-food');
+            medicineItems.forEach(item => {
+                const medicineName = item.getAttribute('data-medicine');
                 const quantity = parseInt(item.querySelector('.quantity').value);
 
                 if (quantity > 0) {
-                    const itemTotal = quantity * 65; // Replace with dynamic pricing as needed
+                    const itemTotal = quantity * 65;
                     totalBill += itemTotal;
-                    orderSummary += `${quantity} ${foodName}(s) - Rs ${itemTotal}<br>`;
+                    orderSummary += `${quantity} ${medicineName}(s) - Rs ${itemTotal}<br>`;
                 }
             });
 
-            // Display order details
             displayOrderDetails(orderSummary, totalBill, name, address, phone);
         }
 
         function displayOrderDetails(summary, bill, name, address, phone) {
-            document.querySelectorAll('.food-item').forEach(item => item.classList.add('hidden'));
-            document.querySelector('label').classList.add('hidden');
+            document.querySelectorAll('.medicine-item').forEach(item => item.classList.add('hidden'));
+            document.querySelectorAll('label').forEach(label => label.classList.add('hidden'));
             document.querySelectorAll('input').forEach(input => input.classList.add('hidden'));
-            document.querySelector('.btn-submit').classList.add('hidden'); // Hide submit button
+            document.querySelector('.btn-submit').classList.add('hidden');
 
             document.getElementById('submitted-details').classList.remove('hidden');
             document.getElementById('order-summary').innerHTML = summary;
