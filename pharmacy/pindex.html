@@ -1,43 +1,186 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Medicine Shop</title>
-    <link rel="stylesheet" href="pstyles.css">
+    <title>Food Ordering System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .main-content {
+            width: 75%;
+        }
+        .sidebar {
+            width: 20%;
+            text-align: center;
+        }
+        .food-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .food-item img {
+            width: 150px;
+            height: 150px;
+            margin-right: 20px;
+        }
+        .quantity {
+            display: inline-block;
+            width: 40px;
+            text-align: center;
+        }
+        .btn {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .hidden {
+            display: none;
+        }
+        #submitted-details {
+            margin-top: 20px;
+        }
+        #food-image {
+            margin-top: 20px;
+        }
+        .sidebar img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Medicine Shop</h1>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">Products</a>
-            <a href="#">Contact</a>
-            <a href="#" id="cart">Cart (<span id="cart-count">0</span>)</a>
-        </nav>
-    </header>
 
-    <main>
-        <h2>Available Medicines</h2>
-        <div class="product-grid">
-            <div class="product-card" data-name="Medicine A" data-price="10">
-                <h3>Medicine Neopeptine</h3>
-                <p>Price: 10</p>
-                <button onclick="addToCart(this)">Add to Cart</button>
-            </div>
-            <div class="product-card" data-name="Medicine B" data-price="20">
-                <h3>Medicine pandy</h3>
-                <p>Price: 20</p>
-                <button onclick="addToCart(this)">Add to Cart</button>
-            </div>
-            <!-- Add more product cards as needed -->
+    <div class="main-content">
+        <h1>Order Your Medicine</h1>
+
+        <div class="Medicine" data-Medicine="Pan D ">
+            <img src="images/pand.jpg" alt="Pan D ">
+            
+            <button onclick="increaseQuantity(this)">+</button>
+            <span class="quantity">0</span>
         </div>
-    </main>
 
-    <footer>
-        <p>&copy; 2024 Medicine Shop. All Rights Reserved.</p>
-    </footer>
+        <div class="food-item" data-food="Chicken Roll">
+            <img src="images/chickenroll.jpg" alt="Chicken Roll">
+            <span>Chicken Roll</span>
+            <button onclick="increaseQuantity(this)">+</button>
+            <span class="quantity">0</span>
+        </div>
 
-    <script src="pscript.js"></script>
+        <div class="food-item" data-food="Chowmin">
+            <img src="images/chowmin.jpg" alt="Chowmin">
+            <span>Chowmin</span>
+            <button onclick="increaseQuantity(this)">+</button>
+            <span class="quantity">0</span>
+        </div>
+
+        <div class="food-item" data-food="Momo">
+            <img src="images/momo.jpg" alt="Momo">
+            <span>Momo</span>
+            <button onclick="increaseQuantity(this)">+</button>
+            <span class="quantity">0</span>
+        </div>
+
+        <h2>Enter Your Details</h2>
+        <label for="name">Name:</label>
+        <input type="text" id="name"><br><br>
+        
+        <label for="roll_number">College Roll Number:</label>
+        <input type="text" id="roll_number"><br><br>
+        
+        <label for="department">Department:</label>
+        <input type="text" id="department"><br><br>
+
+        <button class="btn" onclick="submitOrder()">Submit Order</button>
+
+        <div id="submitted-details" class="hidden">
+            <h2>Order Details</h2>
+            <p id="order-summary"></p>
+            <p id="bill"></p>
+            <img id="food-image" src="images/food.jpg" alt="Food">
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <img src="images/rcciit.jpg" alt="RCCIIT">
+        <img src="images/canteen.jpg" alt="Canteen">
+    </div>
+
+    <script>
+        const prices = {
+            "Burger": 65,
+            "Chicken Roll": 45,
+            "Chowmin": 55,
+            "Momo": 50
+        };
+
+        function increaseQuantity(button) {
+            const quantitySpan = button.nextElementSibling;
+            let quantity = parseInt(quantitySpan.textContent);
+            quantity += 1;
+            quantitySpan.textContent = quantity;
+        }
+
+        function submitOrder() {
+            const foodItems = document.querySelectorAll('.food-item');
+            const name = document.getElementById('name').value;
+            const rollNumber = document.getElementById('roll_number').value;
+            const department = document.getElementById('department').value;
+            
+            let orderSummary = '';
+            let totalBill = 0;
+
+            foodItems.forEach(item => {
+                const foodName = item.getAttribute('data-food');
+                const quantity = parseInt(item.querySelector('.quantity').textContent);
+
+                if (quantity > 0) {
+                    const itemTotal = quantity * prices[foodName];
+                    totalBill += itemTotal;
+                    orderSummary += `${quantity} ${foodName}(s) - Rs ${itemTotal}<br>`;
+                }
+            });
+
+            fetch('/submit_order', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    roll_number: rollNumber,
+                    department: department,
+                    order_summary: orderSummary,
+                    total_bill: totalBill
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                displayOrderDetails(orderSummary, totalBill);
+            });
+        }
+
+        function displayOrderDetails(summary, bill) {
+            document.querySelectorAll('.food-item').forEach(item => item.classList.add('hidden'));
+            document.querySelector('h2').classList.add('hidden');
+            document.querySelectorAll('input').forEach(input => input.classList.add('hidden'));
+            document.querySelector('.btn').classList.add('hidden');
+
+            document.getElementById('submitted-details').classList.remove('hidden');
+            document.getElementById('order-summary').innerHTML = summary;
+            document.getElementById('bill').innerHTML = `Total Bill: Rs ${bill}`;
+        }
+    </script>
+
 </body>
 </html>
+
