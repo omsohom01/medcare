@@ -16,7 +16,7 @@ body {
 /* Container */
 .container {
   width: 90%;
-  max-width: 800px; /* Increase the max-width for better layout */
+  max-width: 800px;
   padding: 20px;
   border-radius: 10px;
   background-color: white;
@@ -31,50 +31,69 @@ body {
 
 /* Services */
 .services-container {
-  overflow-x: auto; /* Enable horizontal scrolling */
-  white-space: nowrap; /* Prevent line breaks for services */
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
 .services {
-  display: inline-flex; /* Align items in a row */
-  justify-content: flex-start; /* Align to start */
-  padding: 10px 0; /* Add padding around the services */
+  display: inline-flex;
+  justify-content: flex-start;
+  padding: 10px 0;
 }
 
 .service-item {
   text-align: center;
-  width: 150px; /* Fixed width for side-by-side layout */
-  margin-right: 20px; /* Space between items */
+  width: 150px;
+  margin-right: 20px;
 }
 
 .service-item img {
-  width: 80px; /* Adjust image size */
+  width: 80px;
   height: 80px;
   border-radius: 50%;
   margin-bottom: 5px;
 }
 
+/* Line with Icons */
+.line-with-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.line-with-icons p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.side-icon {
+  width: 24px;
+  height: 24px;
+}
+
 /* Button Styles */
 .consult-button, .promo-button {
-  padding: 12px 24px; /* Increased padding for a larger button */
-  background-color: #007bff; /* Blue background */
+  padding: 12px 24px;
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 5px;
-  font-size: 16px; /* Increased font size */
+  font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for color and size */
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .consult-button:hover, .promo-button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
-  transform: translateY(-2px); /* Slight lift effect on hover */
+  background-color: #0056b3;
+  transform: translateY(-2px);
 }
 
 .consult-button:focus, .promo-button:focus {
-  outline: none; /* Remove default focus outline */
-  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.5); /* Focus ring for accessibility */
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.5);
 }
 
 .consult-section, .promo-section {
@@ -94,12 +113,4 @@ body {
 
 .promo-section .strikethrough {
   text-decoration: line-through;
-}
-
-/* Side Image Styles */
-.side-image {
-  width: 30px; /* Adjust width as needed */
-  height: auto; /* Maintain aspect ratio */
-  vertical-align: middle; /* Align with text */
-  margin: 0 10px; /* Space between the image and text */
 }
