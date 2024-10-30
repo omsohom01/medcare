@@ -43,14 +43,14 @@ body {
 
 .service-item {
   text-align: center;
-  width: 100px; /* Reduced width for smaller capsules */
-  margin-right: 10px; /* Space between items */
+  width: 150px; /* Fixed width for side-by-side layout */
+  margin-right: 20px; /* Space between items */
 }
 
 .service-item img {
-  width: 60px; /* Adjust image size for smaller icons */
-  height: 60px; /* Maintain aspect ratio */
-  border-radius: 50%; /* Keep round shape */
+  width: 80px; /* Adjust image size */
+  height: 80px;
+  border-radius: 50%;
   margin-bottom: 5px;
 }
 
