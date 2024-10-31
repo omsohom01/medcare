@@ -6,7 +6,7 @@ app = Flask(__name__)
 # Serve pindex.html from the pharmacy folder
 @app.route('/')
 def index():
-    return send_from_directory('pharmacy', 'pindex.html')
+    return send_from_directory('pharmacy','pindex.html')
 
 # Serve static images from the pharmacy's images folder
 @app.route('/pharmacy/images/<filename>')
