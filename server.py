@@ -2,6 +2,12 @@ from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
+@app.errorhandler(Exception)
+def handle_exception(e):
+    # You can log the error or return a custom error page
+    app.logger.error(f"Exception occurred: {e}")
+    return render_template("error.html", error=str(e)), 500
+
 # Route for the appointment form
 @app.route('/')
 def appointment_form():
@@ -30,3 +36,4 @@ def submit_appointment():
 @app.route('/success')
 def submission_success():
     return render_template('success.html')
+
