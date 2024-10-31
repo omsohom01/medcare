@@ -6,27 +6,37 @@ app = Flask(__name__)
 # Serve pindex.html from the pharmacy folder
 @app.route('/')
 def index():
-    return send_from_directory('pharmacy','pindex.html')
+    print("Index route accessed.")  # Debug statement
+    try:
+        return send_from_directory('pharmacy', 'pindex.html')
+    except FileNotFoundError:
+        print("Error: pindex.html not found in 'pharmacy' folder.")  # Debug statement
+        return "File not found", 404
 
 # Serve static images from the pharmacy's images folder
 @app.route('/pharmacy/images/<filename>')
 def serve_pharmacy_image(filename):
+    print(f"Serving pharmacy image: {filename}")  # Debug statement
     return send_from_directory(os.path.join('pharmacy', 'images'), filename)
 
 # Serve static images from the root images folder
 @app.route('/images/<filename>')
 def serve_root_image(filename):
+    print(f"Serving root image: {filename}")  # Debug statement
     return send_from_directory('images', filename)
 
 # Endpoint to handle medicine order submissions
 @app.route('/submit_order', methods=['POST'])
 def submit_order():
     data = request.json
-    name = data['name']
-    address = data['address']
-    phone = data['phone']
-    order_summary = data['order_summary']
-    total_bill = data['total_bill']
+    if not data:
+        return jsonify({"error": "No data provided"}), 400  # Handle empty data case
+    
+    name = data.get('name', 'N/A')
+    address = data.get('address', 'N/A')
+    phone = data.get('phone', 'N/A')
+    order_summary = data.get('order_summary', 'N/A')
+    total_bill = data.get('total_bill', 0)
 
     # Print the submitted details to the console for confirmation
     print(f"Received Order Details:")
