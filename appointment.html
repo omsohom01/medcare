@@ -1,110 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Appointment Form</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-image: url('background.jpg');
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-
-    .form-container {
-      background-color: rgba(255, 255, 255, 0.9);
-      padding: 20px;
-      border-radius: 8px;
-      width: 90%;
-      max-width: 500px;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    h1 {
-      text-align: center;
-      color: #333;
-    }
-
-    label {
-      display: block;
-      margin-top: 10px;
-      font-weight: bold;
-      color: #333;
-    }
-
-    input, textarea, select {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      font-size: 16px;
-    }
-
-    textarea {
-      resize: vertical;
-    }
-
-    .submit-btn {
-      background-color: #228B22;
-      color: #fff;
-      padding: 12px;
-      width: 100%;
-      border: none;
-      border-radius: 4px;
-      font-size: 18px;
-      cursor: pointer;
-      margin-top: 20px;
-    }
-
-    .submit-btn:hover {
-      background-color: #1e7e1e;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('images/background.jpg'); /* Path adjusted to images folder */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #006400; /* Deep green */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #004d00;
+        }
+    </style>
 </head>
 <body>
-  <div class="form-container">
-    <h1>Book Your Appointment</h1>
-    <form action="success.html" method="POST">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" required>
+    <div class="container">
+        <h1>Book an Appointment</h1>
+        <form action="success.html" method="GET">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
 
-      <label for="gender">Gender</label>
-      <select id="gender" name="gender" required>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-        <option value="other">Other</option>
-      </select>
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
 
-      <label for="age">Age</label>
-      <input type="number" id="age" name="age" required>
+            <label for="bloodGroup">Blood Group:</label>
+            <select id="bloodGroup" name="bloodGroup" required>
+                <option value="">Select Blood Group</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+            </select>
 
-      <label for="blood-group">Blood Group</label>
-      <input type="text" id="blood-group" name="blood-group" required>
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
 
-      <label for="dob">Date of Birth</label>
-      <input type="date" id="dob" name="dob" required>
+            <label for="problem">What is the Problem?</label>
+            <textarea id="problem" name="problem" required></textarea>
 
-      <label for="problem">What is the Problem?</label>
-      <textarea id="problem" name="problem" rows="4" required></textarea>
+            <label for="phone">Phone No:</label>
+            <input type="tel" id="phone" name="phone" required>
 
-      <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" name="phone" required>
+            <label for="whatsapp">WhatsApp No:</label>
+            <input type="tel" id="whatsapp" name="whatsapp" required>
 
-      <label for="whatsapp">WhatsApp Number</label>
-      <input type="tel" id="whatsapp" name="whatsapp" required>
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" required></textarea>
 
-      <label for="address">Address</label>
-      <textarea id="address" name="address" rows="3" required></textarea>
-
-      <button type="submit" class="submit-btn">Submit</button>
-    </form>
-  </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 </body>
 </html>

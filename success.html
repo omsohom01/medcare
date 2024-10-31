@@ -1,44 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Submission Success</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      color: #fff;
-      text-align: center;
-      background-image: url('background.jpg');
-      background-size: cover;
-      background-position: center;
-    }
-
-    h1 {
-      font-size: 2em;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 1.2em;
-    }
-
-    .whatsapp-image {
-      width: 100px;
-      height: auto;
-      margin-top: 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submission Successful</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('images/background.jpg'); /* Path adjusted to images folder */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            width: 80%;
+            max-width: 500px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: green;
+            font-size: 24px;
+        }
+        p {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        img {
+            width: 100px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-  <h1>Details Submitted Successfully</h1>
-  <p>We will contact you soon. Please turn on your internet connection for a WhatsApp video call.</p>
-  <img src="whatsapp.jpg" alt="WhatsApp" class="whatsapp-image">
+    <div class="container">
+        <h1>Details Submitted Successfully</h1>
+        <p>We will contact you soon. Please turn on your internet connection so we can make a video call on WhatsApp.</p>
+        <img src="images/whatsapp.png" alt="WhatsApp">
+    </div>
 </body>
 </html>
