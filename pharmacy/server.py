@@ -3,29 +3,33 @@ import os
 
 app = Flask(__name__)
 
-# Serve index.html from the pharmacy directory
+# Serve pindex.html from the pharmacy folder
 @app.route('/')
 def index():
     return send_from_directory('pharmacy', 'pindex.html')
 
-# Serve static images from the 'images' folder
-@app.route('/images/<path:filename>')
-def serve_image(filename):
+# Serve static images from the pharmacy's images folder
+@app.route('/pharmacy/images/<filename>')
+def serve_pharmacy_image(filename):
+    return send_from_directory(os.path.join('pharmacy', 'images'), filename)
+
+# Serve static images from the root images folder
+@app.route('/images/<filename>')
+def serve_root_image(filename):
     return send_from_directory('images', filename)
 
 # Endpoint to handle medicine order submissions
 @app.route('/submit_order', methods=['POST'])
 def submit_order():
-    # Retrieve order details from the request
     data = request.json
-    name = data.get('name')
-    address = data.get('address')
-    phone = data.get('phone')
-    order_summary = data.get('order_summary')
-    total_bill = data.get('total_bill')
+    name = data['name']
+    address = data['address']
+    phone = data['phone']
+    order_summary = data['order_summary']
+    total_bill = data['total_bill']
 
     # Print the submitted details to the console for confirmation
-    print("Received Order Details:")
+    print(f"Received Order Details:")
     print(f"Name: {name}")
     print(f"Address: {address}")
     print(f"Phone: {phone}")
@@ -34,26 +38,14 @@ def submit_order():
 
     # Response message to be sent back to the client
     response_message = (
-        f"<h2>Order Summary:</h2>"
-        f"<p>{order_summary}</p>"
-        f"<p>Total Bill: Rs {total_bill}</p>"
-        f"<p>Customer Name: {name}</p>"
-        f"<p>Address: {address}</p>"
-        f"<p>Phone: {phone}</p>"
+        f"Order Summary:<br>{order_summary}<br>"
+        f"Total Bill: Rs {total_bill}<br>"
+        f"Customer Name: {name}<br>"
+        f"Address: {address}<br>"
+        f"Phone: {phone}"
     )
 
     return jsonify({"message": response_message})
-
-# Example endpoint to get available medicines (dummy data)
-@app.route('/api/medicines', methods=['GET'])
-def get_medicines():
-    # In a real application, this data would come from a database
-    medicines = [
-        {"id": 1, "name": "Paracetamol", "price": 10},
-        {"id": 2, "name": "Ibuprofen", "price": 20},
-        {"id": 3, "name": "Amoxicillin", "price": 30},
-    ]
-    return jsonify(medicines)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=10000, debug=True)
